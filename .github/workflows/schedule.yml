@@ -25,7 +25,8 @@ jobs:
         run: |
           scoop config GH_TOKEN $env:GITHUB_TOKEN
           $bucketPath = $env:GITHUB_WORKSPACE
-          scoop bucket add local $bucketPath
+          
+          # Direkter Aufruf des Checkver-Skripts unter Umgehung des fehlerhaften 'scoop bucket add'
           $checkver = "$env:USERPROFILE\scoop\apps\scoop\current\bin\checkver.ps1"
           & $checkver * -u -dir $bucketPath
 
