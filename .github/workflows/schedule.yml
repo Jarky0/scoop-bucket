@@ -18,13 +18,16 @@ jobs:
 
       - name: Install Scoop
         uses: MinoruSekine/setup-scoop@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Manifest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          scoop bucket add local .
-          scoop checkver * -u -dir .
+          scoop config GH_TOKEN $env:GITHUB_TOKEN
+          $bucketPath = $env:GITHUB_WORKSPACE
+          scoop bucket add local $bucketPath
+          $checkver = "$env:USERPROFILE\scoop\apps\scoop\current\bin\checkver.ps1"
+          & $checkver * -u -dir $bucketPath
 
       - name: Commit and Push Changes
         run: |
