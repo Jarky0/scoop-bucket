@@ -9,7 +9,7 @@
         "main/ffmpeg",
         "extras/mkvtoolnix",
         "hdr10plus_tool",
-        "dovi_tool"
+        "extras/dovi-tool"
     ],
     "bin": [
         "DDVT_DEMUXER.cmd",
