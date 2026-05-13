@@ -8,7 +8,6 @@ on:
 jobs:
   scoop-checkver:
     runs-on: windows-latest
-    
     permissions:
       contents: write
 
@@ -19,25 +18,22 @@ jobs:
       - name: Install Scoop
         uses: MinoruSekine/setup-scoop@v4
 
-      - name: Update Manifest
+      - name: Update Manifests via Checkver
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           scoop config GH_TOKEN $env:GITHUB_TOKEN
           $bucketPath = $env:GITHUB_WORKSPACE
-          
-          # Direkter Aufruf des Checkver-Skripts unter Umgehung des fehlerhaften 'scoop bucket add'
           $checkver = "$env:USERPROFILE\scoop\apps\scoop\current\bin\checkver.ps1"
           & $checkver * -u -dir $bucketPath
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           if (git status --porcelain) {
-            git add freecad-weekly.json
-            git commit -m "Auto-update: FreeCAD Weekly"
+            git add *.json
+            git commit -m "Auto-update: Scoop Manifests aktualisiert"
             git push
           } else {
             Write-Host "Keine Updates gefunden."
