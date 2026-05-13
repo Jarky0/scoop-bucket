@@ -1,6 +1,6 @@
 {
     "version": "0.74",
-    "description": "Dolby Vision Tool (DDVT) - FULL Version. Complete suite including all 3rd party tools.",
+    "description": "Dolby Vision Tool (DDVT) - FULL Version.",
     "homepage": "https://github.com/DonaldFaQ/DDVT",
     "license": "Freeware",
     "url": "https://github.com/DonaldFaQ/DDVT/releases/download/0.74/DDVT_v0.74_FULL.7z",
@@ -20,17 +20,14 @@
         "DDVT_MKVTOMP4.cmd",
         "DDVT_OPTIONS.cmd",
         "DDVT_REMOVER.cmd",
-        "DDVT_SYNCCHECK.cmd"
+        ["DDVT_FILEINFO.cmd", "DDVT_SYNCCHECK", "-CHECK"]
     ],
     "post_install": [
-        "Write-Host 'Ensuring Scoop-managed core tools are linked to DDVT...' -ForegroundColor Cyan",
+        "Write-Host 'Linking core binaries from Scoop to DDVT...' -ForegroundColor Cyan",
         "Copy-Item \"$(scoop which ffmpeg)\" -Destination \"$dir\\tools\\ffmpeg.exe\" -Force",
         "Copy-Item \"$(scoop which mkvmerge)\" -Destination \"$dir\\tools\\mkvmerge.exe\" -Force",
         "Copy-Item \"$(scoop which hdr10plus_tool)\" -Destination \"$dir\\tools\\hdr10plus_tool.exe\" -Force",
         "Copy-Item \"$(scoop which dovi_tool)\" -Destination \"$dir\\tools\\dovi_tool.exe\" -Force"
-    ],
-    "notes": [
-        "Scoop has also linked your managed versions of ffmpeg, mkvmerge, and dovi_tool for maximum compatibility."
     ],
     "checkver": {
         "github": "https://github.com/DonaldFaQ/DDVT",
