@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/quietvoid/hdr10plus_tool/releases/download/v1.7.2/hdr10plus_tool-1.7.2-x86_64-pc-windows-msvc.zip",
+            "url": "https://github.com/quietvoid/hdr10plus_tool/releases/download/1.7.2/hdr10plus_tool-1.7.2-x86_64-pc-windows-msvc.zip",
             "hash": "82B2D560073941B14C6511A431F429E33E134E5CAEFB60D7E8F6F6E6DA8E16BA"
         }
     },
@@ -14,7 +14,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/quietvoid/hdr10plus_tool/releases/download/v$version/hdr10plus_tool-$version-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/quietvoid/hdr10plus_tool/releases/download/$version/hdr10plus_tool-$version-x86_64-pc-windows-msvc.zip"
             }
         }
     }
