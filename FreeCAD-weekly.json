@@ -1,12 +1,12 @@
 {
-    "version": "weekly-2025.12.03",
+    "version": "2026.03.25",
     "description": "A free and open-source multi-platform parametric 3D modeler.",
     "homepage": "https://www.freecadweb.org",
     "license": "LGPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2025.12.03/FreeCAD_weekly-2025.12.03-Windows-x86_64-py311.7z",
-            "hash": "47cbc564fb0fa9d9bc36f1cd7918cee072734c96085021a783c6fb0976f47766"
+            "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2026.03.25/FreeCAD_weekly-2026.03.25-Windows-x86_64-py311.7z",
+            "hash": "71ff2db6907b5f162100ea69675f8317e3716cf2491f47836233e782fcabbfe2"
         }
     },
     "pre_install": "pushd $dir ; mv */* . ; rm FreeCAD_* ; popd",
