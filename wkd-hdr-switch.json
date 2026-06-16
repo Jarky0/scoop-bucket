@@ -15,11 +15,7 @@
             "WKD HDR Switch"
         ]
     ],
-    "suggest": {
-        ".NET 8 Desktop Runtime": [
-            "extras/windowsdesktop-runtime-lts"
-        ]
-    },
+    "depends": "extras/windowsdesktop-runtime-lts",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
