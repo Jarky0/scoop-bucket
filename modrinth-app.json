@@ -9,7 +9,7 @@
             "hash": "72a2a30db7255f14638f345b0eeab3ccbe7a7edeb8b0cfe93d05ebd4a56037ce"
         }
     },
-    "innosetup": true,
+    "pre_install": "Expand-7zipArchive \"$dir\\$fname\" -Removal",
     "shortcuts": [
         ["Modrinth App.exe", "Modrinth App"]
     ],
