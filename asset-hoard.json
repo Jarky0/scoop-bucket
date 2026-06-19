@@ -1,0 +1,24 @@
+{
+    "version": "0.1.0",
+    "description": "A local-first desktop asset manager for indie game developers and artists. Organise, preview, and search your entire asset library across 40+ file formats.",
+    "homepage": "https://assethoard.com/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Asset-Hoard/assethoard.com/releases/download/v0.1.0/Asset.Hoard_0.1.0_x64_en-US.msi",
+            "hash": "f4ceb69cf1c080a93d36db96856a48cb0009ac0bd8dc28dff228405fe298f4b4"
+        }
+    },
+    "pre_install": "Expand-MsiArchive \"$dir\\$fname\" -Removal",
+    "shortcuts": [
+        ["Asset Hoard.exe", "Asset Hoard"]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Asset-Hoard/assethoard.com/releases/download/v$version/Asset.Hoard_$version_x64_en-US.msi"
+            }
+        }
+    }
+}
