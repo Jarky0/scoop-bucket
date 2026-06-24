@@ -9,7 +9,10 @@
             "hash": "1abb7cc7e0d62960355b461ebc44ca86946ea95fa9a4f31499fe1d19667ef7e1"
         }
     },
-    "pre_install": "Expand-MsiArchive \"$dir\\$fname\" -Removal",
+    "pre_install": [
+    "Expand-MsiArchive \"$dir\\Monitorian.Installer.msi\" -Removal",
+    "Remove-Item \"$dir\\$fname\" -Force"
+],
     "shortcuts": [
         ["Monitorian.exe", "Monitorian"]
     ],
