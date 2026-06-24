@@ -10,9 +10,10 @@
         }
     },
     "pre_install": [
-    "Expand-MsiArchive \"$dir\\Monitorian.Installer.msi\" -Removal",
-    "Remove-Item \"$dir\\$fname\" -Force"
-],
+        "Expand-MsiArchive \"$dir\\Monitorian.Installer.msi\" -Removal",
+        "Move-Item \"$dir\\PFiles\\Monitorian\\*\" \"$dir\" -Force",
+        "Remove-Item \"$dir\\PFiles\" -Recurse -Force"
+    ],
     "shortcuts": [
         ["Monitorian.exe", "Monitorian"]
     ],
