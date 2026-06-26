@@ -27,6 +27,52 @@ jobs:
           $checkver = "$env:USERPROFILE\scoop\apps\scoop\current\bin\checkver.ps1"
           & $checkver * -u -dir $bucketPath
 
+      - name: Update NMSSaveEditor (raw-master distribution)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $manifest = "$env:GITHUB_WORKSPACE\nms-save-editor.json"
+          $changelogUrl = "https://raw.githubusercontent.com/goatfungus/NMSSaveEditor/master/CHANGELOG.md"
+          $zipUrl = "https://github.com/goatfungus/NMSSaveEditor/raw/master/NMSSaveEditor.zip"
+
+          # Get latest version from CHANGELOG
+          $changelog = Invoke-RestMethod -Uri $changelogUrl
+          $latestVersion = [regex]::Match($changelog, "## ([\d.]+) - Update").Groups[1].Value
+          Write-Host "Latest upstream version: $latestVersion"
+
+          # Get current manifest version
+          $manifestJson = Get-Content $manifest -Raw | ConvertFrom-Json
+          $currentVersion = $manifestJson.version
+          Write-Host "Current manifest version: $currentVersion"
+
+          if ($latestVersion -ne $currentVersion) {
+            Write-Host "New version detected! Downloading ZIP to compute hash..."
+
+            # Download ZIP to temp file
+            $tempZip = Join-Path $env:TEMP "NMSSaveEditor-$latestVersion.zip"
+            Invoke-RestMethod -Uri $zipUrl -OutFile $tempZip
+
+            # Compute SHA256
+            $hash = (Get-FileHash -Path $tempZip -Algorithm SHA256).Hash.ToLower()
+            Write-Host "SHA256: $hash"
+
+            # Remove temp file
+            Remove-Item $tempZip -Force
+
+            # Read manifest as raw text for patching
+            $manifestText = Get-Content $manifest -Raw
+
+            # Update version
+            $manifestText = $manifestText -replace '"version": "[\d.]+"', "`"version`": `"$latestVersion`""
+            # Update hash
+            $manifestText = $manifestText -replace '"hash": "[a-f0-9]{64}"', "`"hash`": `"$hash`""
+
+            Set-Content -Path $manifest -Value $manifestText -NoNewline
+            Write-Host "Manifest updated to version $latestVersion"
+          } else {
+            Write-Host "NMSSaveEditor is up to date."
+          }
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"

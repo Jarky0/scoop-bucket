@@ -1,0 +1,28 @@
+{
+    "version": "1.21.0",
+    "description": "No Man's Sky - Save Editor",
+    "homepage": "https://github.com/goatfungus/NMSSaveEditor",
+    "license": "Freeware",
+    "notes": "Requires Java Runtime Environment 8 or later (https://java.com/en/download/manual.jsp).\nFalsch-positive Antiviren-Meldungen beim EXE-Download sind bekannt — ZIP-Download ist die Alternative.",
+    "suggest": {
+        "JDK": [
+            "java/temurin8-jdk",
+            "java/temurin11-jdk",
+            "java/temurin17-jdk",
+            "java/temurin21-jdk"
+        ]
+    },
+    "url": "https://github.com/goatfungus/NMSSaveEditor/raw/master/NMSSaveEditor.zip",
+    "hash": "f57c2979ee6a498cd7d38d9587b23d5308023b113494043626732a1aa366e6cc",
+    "shortcuts": [
+        ["NMSSaveEditor.bat", "NMSSaveEditor"],
+        ["NMSSaveEditor-4G.bat", "NMSSaveEditor (4G)"]
+    ],
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/goatfungus/NMSSaveEditor/master/CHANGELOG.md",
+        "regex": "## ([\\d.]+) - Update"
+    },
+    "autoupdate": {
+        "url": "https://github.com/goatfungus/NMSSaveEditor/raw/master/NMSSaveEditor.zip"
+    }
+}
