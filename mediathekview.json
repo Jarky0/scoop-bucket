@@ -1,0 +1,40 @@
+{
+    "version": "14.5.0",
+    "description": "Search and download German public broadcasters' media libraries (ARD, ZDF, Arte, 3Sat, SWR, BR, MDR, NDR, WDR, HR, RBB, ORF, SRF)",
+    "homepage": "https://mediathekview.de/",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "MediathekView bundles its own JRE. No separate Java installation required."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://download.mediathekview.de/stabil/MediathekView-14.5.0-win.zip",
+            "hash": "d0a09c57653f7055fdbb959ffdcf2cbbad8a1191c91b5b9056e91c4c2ebcf9e7"
+        },
+        "arm64": {
+            "url": "https://download.mediathekview.de/stabil/MediathekView-14.5.0-win-arm64.zip",
+            "hash": "ac451a70e6d0e832dfe6089680da625244c10afd6a6587a9a513ce0e0279ec84"
+        }
+    },
+    "extract_dir": "MediathekView",
+    "shortcuts": [
+        [
+            "MediathekView.exe",
+            "MediathekView"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.mediathekview.de/stabil/",
+        "regex": "MediathekView-([\\d.]+)-win\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.mediathekview.de/stabil/MediathekView-$version-win.zip"
+            },
+            "arm64": {
+                "url": "https://download.mediathekview.de/stabil/MediathekView-$version-win-arm64.zip"
+            }
+        }
+    }
+}
