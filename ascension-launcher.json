@@ -13,27 +13,16 @@
         "Expand-7zipArchive \"$dir\\$fname\" -Removal",
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Recurse -Force -ErrorAction SilentlyContinue",
-        "Write-Output 'Patching AscensionClientServices.exe manifest to asInvoker...'",
-        "$path = \"$dir\\resources\\AscensionClientServices.exe\"",
-        "if (Test-Path $path) {",
-        "    $bytes = [System.IO.File]::ReadAllBytes($path)",
-        "    $old = [System.Text.Encoding]::ASCII.GetBytes('level=\"requireAdministrator\" uiAccess=\"false\"')",
-        "    $new = [System.Text.Encoding]::ASCII.GetBytes('level=\"asInvoker\"             uiAccess=\"false\"')",
-        "    for ($i = 0; $i -le $bytes.Length - $old.Length; $i++) {",
-        "        $m = $true",
-        "        for ($j = 0; $j -lt $old.Length; $j++) { if ($bytes[$i + $j] -ne $old[$j]) { $m = $false; break } }",
-        "        if ($m) {",
-        "            for ($j = 0; $j -lt $new.Length; $j++) { $bytes[$i + $j] = $new[$j] }",
-        "            break",
-        "        }",
-        "    }",
-        "    [System.IO.File]::WriteAllBytes($path, $bytes)",
-        "    Write-Output 'Patched successfully.'",
-        "} else { Write-Output 'Warning: AscensionClientServices.exe not found at $path' }"
+        "Write-Output 'Creating no-UAC wrapper script...'",
+        "@\"",
+        "@echo off",
+        "set __COMPAT_LAYER=RUNASINVOKER",
+        "start \"\" \"%~dp0Ascension Launcher.exe\" %*",
+        "\"@ | Out-File -FilePath \"$dir\\Ascension Launcher.bat\" -Encoding ASCII"
     ],
     "shortcuts": [
         [
-            "Ascension Launcher.exe",
+            "Ascension Launcher.bat",
             "Ascension Launcher"
         ]
     ],
