@@ -12,17 +12,11 @@
     "pre_install": [
         "Expand-7zipArchive \"$dir\\$fname\" -Removal",
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Recurse -Force -ErrorAction SilentlyContinue",
-        "Write-Output 'Creating no-UAC wrapper script...'",
-        "@\"",
-        "@echo off",
-        "set __COMPAT_LAYER=RUNASINVOKER",
-        "start \"\" \"%~dp0Ascension Launcher.exe\" %*",
-        "\"@ | Out-File -FilePath \"$dir\\Ascension Launcher.bat\" -Encoding ASCII"
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Recurse -Force -ErrorAction SilentlyContinue"
     ],
     "shortcuts": [
         [
-            "Ascension Launcher.bat",
+            "Ascension Launcher.exe",
             "Ascension Launcher"
         ]
     ],
