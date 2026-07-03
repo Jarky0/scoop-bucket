@@ -4,29 +4,24 @@
     "homepage": "https://github.com/Xanashi/Icaros",
     "license": "Freeware",
     "notes": [
-        "After installation, run 'IcarosConfig' and enable the desired thumbnail and property handlers.",
+        "After installation, run 'Icaros Config' and enable the desired thumbnail and property handlers.",
         "A restart of Explorer.exe (or a reboot) may be required for thumbnails to appear."
     ],
     "url": "https://github.com/Xanashi/Icaros/releases/download/v3.3.6/Icaros_v3.3.6.zip",
     "hash": "18854b445420e7167b5f54696009c9ffbc0e7917da9d9a686eac71ea3c81d47a",
-    "architecture": {
-        "64bit": {
-            "extract_dir": "64-bit"
-        }
-    },
     "bin": "IcarosConfig.exe",
     "shortcuts": [
         ["IcarosConfig.exe", "Icaros Config"]
     ],
     "post_install": [
-        "regsvr32 /s \"$dir\\IcarosThumbnailProvider.dll\"",
-        "regsvr32 /s \"$dir\\IcarosPropertyHandler.dll\"",
-        "regsvr32 /s \"$dir\\IcarosCache.dll\""
+        "regsvr32 /s \"$dir\\64-bit\\IcarosThumbnailProvider.dll\"",
+        "regsvr32 /s \"$dir\\64-bit\\IcarosPropertyHandler.dll\"",
+        "regsvr32 /s \"$dir\\64-bit\\IcarosCache.dll\""
     ],
     "pre_uninstall": [
-        "regsvr32 /u /s \"$dir\\IcarosThumbnailProvider.dll\"",
-        "regsvr32 /u /s \"$dir\\IcarosPropertyHandler.dll\"",
-        "regsvr32 /u /s \"$dir\\IcarosCache.dll\""
+        "regsvr32 /u /s \"$dir\\64-bit\\IcarosThumbnailProvider.dll\"",
+        "regsvr32 /u /s \"$dir\\64-bit\\IcarosPropertyHandler.dll\"",
+        "regsvr32 /u /s \"$dir\\64-bit\\IcarosCache.dll\""
     ],
     "checkver": {
         "github": "https://github.com/Xanashi/Icaros"
