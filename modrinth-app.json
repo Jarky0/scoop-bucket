@@ -1,12 +1,12 @@
 {
-    "version": "0.20.2",
+    "version": "0.20.3",
     "description": "A modern Minecraft launcher for mods, modpacks, and more from Modrinth",
     "homepage": "https://modrinth.com/app",
     "license": "AGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/modrinth/code/releases/download/v0.20.2/Modrinth.App_0.20.2_x64-setup.exe",
-            "hash": "b6a09f8cd8535588cd141b18be5fcedbbaeccb36c8de83876ffd3e9224f2a493"
+            "url": "https://github.com/modrinth/code/releases/download/v0.20.3/Modrinth.App_0.20.3_x64-setup.exe",
+            "hash": "7aa8f6bef4b777ea1e3098af0a7f74bc2f4b0df6cb7f7c3339ce7c0c5daad0f4"
         }
     },
     "pre_install": [
